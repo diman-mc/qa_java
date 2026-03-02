@@ -6,29 +6,27 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-
 public class LionTest {
-    @Mock
-    IFeline feline;
-    Lion lion;
 
-    @Spy
-    IAnimal animal;
+    @Mock
+    private IFeline feline;
+
+    @Mock
+    private IAnimal animal;
+
+    private Lion lion;
 
     @Before
     public void setUp() throws Exception {
         lion = new Lion("Самец", feline, animal);
     }
 
-
     @Test(expected = Exception.class)
-    public void loinExceptionTest() throws Exception {
-        Lion lion = new Lion("Не самец и не самка", feline, animal);
-        Assert.assertThrows(Exception.class, lion::doesHaveMane);
+    public void lionExceptionTest() throws Exception {
+        new Lion("Не самец и не самка", feline, animal);
     }
 
     @Test
