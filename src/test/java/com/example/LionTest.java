@@ -19,10 +19,10 @@ public class LionTest {
 
     private Lion lion;
 
-    @Before
+    /*@Before
     public void setUp() throws Exception {
         lion = new Lion("Самец", feline, animal);
-    }
+    }*/
 
     @Test(expected = Exception.class)
     public void lionExceptionTest() throws Exception {
@@ -30,18 +30,27 @@ public class LionTest {
     }
 
     @Test
-    public void getKittensTest() {
+    public void getKittensTest() throws Exception {
+        Lion lion = new Lion("Самец", feline, animal);
         lion.getKittens();
         Mockito.verify(feline).getKittens();
     }
 
     @Test
-    public void doesHaveManeTest() {
-        Assert.assertTrue(lion.doesHaveMane());
+    public void doesHaveManeTest_Male() throws Exception {
+        Lion maleLion = new Lion("Самец", feline, animal);
+        Assert.assertTrue(maleLion.doesHaveMane());
+    }
+
+    @Test
+    public void doesHaveManeTest_Female() throws Exception {
+        Lion femaleLion = new Lion("Самка", feline, animal);
+        Assert.assertFalse(femaleLion.doesHaveMane());
     }
 
     @Test
     public void getFoodTest() throws Exception {
+        Lion lion = new Lion("Самец", feline, animal);
         lion.getFood();
         Mockito.verify(animal).getFood("Хищник");
     }

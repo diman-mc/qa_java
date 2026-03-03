@@ -14,19 +14,20 @@ public class FelineTest {
 
     @Test
     public void getFamilyTest() {
-        Mockito.when(feline.getFamily()).thenReturn("Кошачьи");
-        Assert.assertEquals("Кошачьи", feline.getFamily());
+        String actualFamily = feline.getFamily();
+        Assert.assertEquals("Кошачьи", actualFamily);
     }
 
     @Test
     public void getKittensWithoutParams() {
-        feline.getKittens();
-        Mockito.verify(feline, Mockito.times(1)).getKittens(1);
+        int actualKittens = feline.getKittens();
+        Assert.assertEquals(1, actualKittens);
     }
 
     @Test
     public void getKittensWithParamsInt() {
-        feline.getKittens(0);
-        Mockito.verify(feline).getKittens(Mockito.anyInt());
+        int kittensCount = 5;
+        int actualKittens = feline.getKittens(kittensCount);
+        Assert.assertEquals(kittensCount, actualKittens);
     }
 }
