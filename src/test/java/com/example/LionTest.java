@@ -19,11 +19,6 @@ public class LionTest {
 
     private Lion lion;
 
-    /*@Before
-    public void setUp() throws Exception {
-        lion = new Lion("Самец", feline, animal);
-    }*/
-
     @Test(expected = Exception.class)
     public void lionExceptionTest() throws Exception {
         new Lion("Не самец и не самка", feline, animal);
